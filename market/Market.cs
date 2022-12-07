@@ -51,7 +51,7 @@ class Market
     private void TryBuy(MarketItem item, MarketItemCategory category)
     {
         string message = Buy(_customer, item, category)
-            ? "Merci pour votre achat."
+            ? "Merci pour votre achat. "
                 + "Je suis sûr que cet objet vous donnera entière satisfaction."
             : "Solde insuffisant :"
                 + " cet objet coûte " + item.Price
