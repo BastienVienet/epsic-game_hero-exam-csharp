@@ -17,7 +17,8 @@ class Game
     public List<HeroClass> _availableClasses { get; private set; }  = new List<HeroClass>()
     {
         new Warrior(),
-        new Paladin()
+        new Paladin(),
+        new Voleur(),
     };
     private List<Weapon> _availableWeapons = new List<Weapon>()
     {
@@ -27,7 +28,7 @@ class Game
         /* 3 */ new Weapon("Epée longue enchantée", "Dégats : 11-16, Coups: 35, vitesse et agilité +10%", 1, 1.1f, 1, 1f, 11, 16, 35),
         /* 4 */ new Weapon("Marteau de vie", "Dégats : 8-16, Coups: 30, PV +20%", 1.2f, 1, 1, 1, 8, 16, 30),
         /* 5 */ new Weapon("Hache ancestrale", "Dégats : 6-10, Coups: 50, force +20% et agilité -10%", 1, 1, 1.2f, 0.9f, 6, 10, 50),
-        /* 6 */ new Weapon("Baton de mage de feu", "20-40, Coups: 15, PV -25%, vitesse, force et agilité +15%", 0.75f, 1.15f, 1.15f, 1.15f, 20, 40, 15),
+        /* 6 */ new Weapon("Baton de mage de feu", "Dégats 20-40, Coups: 15, PV -25%, vitesse, force et agilité +15%", 0.75f, 1.15f, 1.15f, 1.15f, 20, 40, 15),
         /* 7 */ new Weapon("Arc elfique", "Dégats : 30-35, Coups: 5, PV et vitesse +25%", 1.25f, 1.25f, 1, 1, 30, 35, 5),
         /* 8 */ new Weapon("Dague elfique", "Dégats : 18-22, Coups: 20, force et agilité +25%", 1, 1, 1.25f, 1.25f, 18, 22, 20),
         /* 9 */ new Weapon("Lance démoniaque", "Dégats : 30-100, Coups: 5, PV +20%, force +30%, vitesse et agilité -20%", 1.2f, 0.8f, 1.3f, 0.8f, 30, 100, 5)
@@ -46,7 +47,10 @@ class Game
         /* 9 */ new Equipment("Cotte de mailles fines", "PV +25%, vitesse et agilité -10%", 1.25f, 0.9f, 1, 0.9f),
         /* 10 */ new Equipment("Cuirasse de conquérant", "PV +100%, force +20%, vitesse -20%, agilité -50%", 2, 0.8f, 1.2f, 0.5f),
         /* 11 */ new Equipment("Gants de puissance", "Force +50%, agilité -10%", 1, 1, 1.5f, 0.9f),
-        /* 12 */ new Equipment("Bottes de contrebandier", "Vitesse +30%, agilité +20%, force -10%", 1, 1.3f, 0.9f, 1.2f)
+        /* 12 */ new Equipment("Bottes de contrebandier", "Vitesse +30%, agilité +20%, force -10%", 1, 1.3f, 0.9f, 1.2f),
+        /* 13 */ new Equipment("Sandales à crampons", "PV, vitesse, force, agilité +10%", 1.1f, 1.1f, 1.1f, 1.1f),
+        /* 14 */ new Equipment("Cape céleste", "Agilité +50%, PV, vitesse et force -20%", 0.8f, 0.8f, 0.8f, 1.5f),
+        /* 15 */ new Equipment("Cape de garde royal", "PV et force +50%, vitesse et agilité -40%", 1.5f, 0.6f, 1.5f, 0.6f),
     };
 
     private Random _rand = new Random();
@@ -116,7 +120,10 @@ class Game
             new MarketItem(_availableEquipments[9], 150),
             new MarketItem(_availableEquipments[10], 150),
             new MarketItem(_availableEquipments[11], 150),
-            new MarketItem(_availableEquipments[12], 150)
+            new MarketItem(_availableEquipments[12], 150), 
+            new MarketItem(_availableEquipments[13], 150),
+            new MarketItem(_availableEquipments[14], 250),
+            new MarketItem(_availableEquipments[15], 250),
         };
         equipmentsCategory.Items.RemoveAll(item => true);
         equipmentsCategory.Items.AddRange(buyableEquipments);
@@ -128,19 +135,19 @@ class Game
         Hero mob1 = RandomHero(
             "Jakkar",
             100, 100, 100, 100, 750,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         Hero mob2 = RandomHero(
             "Visérion",
             100, 100, 100, 100, 1000,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         Hero mob3 = RandomHero(
             "Ruféus",
             100, 100, 100, 100, 1250,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         Hero mob4 = RandomHero(
             "L'impitoyable M. Galli",
             100, 100, 100, 100, 1500,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         _fights = new List<Fight>()
         {
             new Fight(Player, mob1),
@@ -255,7 +262,6 @@ class Game
     {
         List<IPromptable> items = _availableClasses.ToList<IPromptable>();
         string message = "Maintenant dis-moi à quelle classe tu appartiens ?";
-        // TODO afficher la description détaillée de chaque classe
         return _availableClasses[ConsoleUtils.PromptItems(items, message, false, null)];
     }
 
