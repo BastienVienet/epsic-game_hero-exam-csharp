@@ -1,27 +1,39 @@
 class Equipment : IHeroModifier, IBuyable
 {
-    public string Name  { get; private set; } 
-    public string? Description  { get; private set; } 
-    public float HealthModifier  { get; private set; } 
-    public float SpeedModifier  { get; private set; } 
-    public float ForceModifier  { get; private set; } 
-    public float AgilityModifier  { get; private set; } 
+    public string Name { get; private set; }
+    public string? Description { get; private set; }
+    public float HealthModifierFloat { get; private set; }
+    public float SpeedModifierFloat { get; private set; }
+    public float ForceModifierFloat { get; private set; }
+    public float AgilityModifierFloat { get; private set; }
+    public int HealthModifierInt { get; private set; }
+    public int SpeedModifierInt { get; private set; }
+    public int ForceModifierInt { get; private set; }
+    public int AgilityModifierInt { get; private set; }
 
     public Equipment(
         string name,
         string description,
-        float healthModifier,
-        float speedModifier,
-        float forceModifier,
-        float agilityModifier
+        float healthModifierFloat,
+        float speedModifierFloat,
+        float forceModifierFloat,
+        float agilityModifierFloat,
+        int healthModifierInt,
+        int speedModifierInt,
+        int forceModifierInt,
+        int agilityModifierInt
     )
     {
         Name = name;
         Description = description;
-        HealthModifier = healthModifier;
-        SpeedModifier = speedModifier;
-        ForceModifier = forceModifier;
-        AgilityModifier = agilityModifier;
+        HealthModifierFloat = healthModifierFloat;
+        SpeedModifierFloat = speedModifierFloat;
+        ForceModifierFloat = forceModifierFloat;
+        AgilityModifierFloat = agilityModifierFloat;
+        HealthModifierInt = healthModifierInt;
+        SpeedModifierInt = speedModifierInt;
+        ForceModifierInt = forceModifierInt;
+        AgilityModifierInt = agilityModifierInt;
     }
 
     public IBuyable Clone()
@@ -29,10 +41,14 @@ class Equipment : IHeroModifier, IBuyable
         return new Equipment(
             Name,
             Description,
-            HealthModifier,
-            SpeedModifier,
-            ForceModifier,
-            AgilityModifier
+            HealthModifierFloat,
+            SpeedModifierFloat,
+            ForceModifierFloat,
+            AgilityModifierFloat,
+            HealthModifierInt,
+            SpeedModifierInt,
+            ForceModifierInt,
+            AgilityModifierInt
         );
     }
 }

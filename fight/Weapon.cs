@@ -6,10 +6,14 @@ class Weapon : IBuyable, IWeapon
     public string Name  { get; private set; } 
     public ICanFight? Owner { get; set; }
     public string? Description  { get; private set; } 
-    public float HealthModifier  { get; private set; } 
-    public float SpeedModifier  { get; private set; } 
-    public float ForceModifier  { get; private set; } 
-    public float AgilityModifier  { get; private set; } 
+    public float HealthModifierFloat  { get; private set; } 
+    public float SpeedModifierFloat { get; private set; } 
+    public float ForceModifierFloat { get; private set; } 
+    public float AgilityModifierFloat { get; private set; }
+    public int HealthModifierInt  { get; private set; } 
+    public int SpeedModifierInt  { get; private set; } 
+    public int ForceModifierInt  { get; private set; } 
+    public int AgilityModifierInt  { get; private set; } 
     public int MinDamage  { get; private set; } 
     public int MaxDamage  { get; private set; } 
     public int ComputedMinDamage 
@@ -28,10 +32,14 @@ class Weapon : IBuyable, IWeapon
     public Weapon(
         string name,
         string description,
-        float healthModifier,
-        float speedModifier,
-        float forceModifier,
-        float agilityModifier,
+        float healthModifierFloat,
+        float speedModifierFloat,
+        float forceModifierFloat,
+        float agilityModifierFloat,
+        int healthModifierInt,
+        int speedModifierInt,
+        int forceModifierInt,
+        int agilityModifierInt,
         int minDamage,
         int maxDamage,
         int maxUses
@@ -39,10 +47,14 @@ class Weapon : IBuyable, IWeapon
     {
         Name = name;
         Description = description;
-        HealthModifier = healthModifier;
-        SpeedModifier = speedModifier;
-        ForceModifier = forceModifier;
-        AgilityModifier = agilityModifier;
+        HealthModifierFloat = healthModifierFloat;
+        SpeedModifierFloat = speedModifierFloat;
+        ForceModifierFloat = forceModifierFloat;
+        AgilityModifierFloat = agilityModifierFloat;
+        HealthModifierInt = healthModifierInt;
+        SpeedModifierInt = speedModifierInt;
+        ForceModifierInt = forceModifierInt;
+        AgilityModifierInt = agilityModifierInt;
         MinDamage = minDamage;
         MaxDamage = maxDamage;
         MaxUses = maxUses;
@@ -54,7 +66,7 @@ class Weapon : IBuyable, IWeapon
         int minDamage,
         int maxDamage,
         int maxUses
-    ) : this(name, description, 1, 1, 1, 1, minDamage, maxDamage, maxUses){ }
+    ) : this(name, description, 1, 1, 1, 1, 0,0,0,0,minDamage, maxDamage, maxUses){ }
 
     public string Use(FighterSlot target)
     {
@@ -96,10 +108,14 @@ class Weapon : IBuyable, IWeapon
         return new Weapon(
             Name,
             Description,
-            HealthModifier,
-            SpeedModifier,
-            ForceModifier,
-            AgilityModifier,
+            HealthModifierFloat,
+            SpeedModifierFloat,
+            ForceModifierFloat,
+            AgilityModifierFloat,
+            HealthModifierInt,
+            SpeedModifierInt,
+            ForceModifierInt,
+            AgilityModifierInt,
             MinDamage,
             MaxDamage,
             MaxUses

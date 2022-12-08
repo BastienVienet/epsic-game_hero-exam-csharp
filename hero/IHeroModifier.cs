@@ -1,7 +1,12 @@
 interface IHeroModifier
 {
-    public float HealthModifier { get; }
-    public float SpeedModifier { get; }
-    public float ForceModifier { get; }
-    public float AgilityModifier { get; }
+    public float HealthModifierFloat { get; }
+    public float SpeedModifierFloat { get; }
+    public float ForceModifierFloat { get; }
+    public float AgilityModifierFloat { get; }
+    
+    public int HealthModifierInt { get; }
+    public int SpeedModifierInt { get; }
+    public int ForceModifierInt { get; }
+    public int AgilityModifierInt { get; }
 }
