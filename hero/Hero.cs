@@ -31,8 +31,8 @@ class Hero : IMarketCustomer, ICanFight
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.AddRange(Weapons);
             modifiers.AddRange(Equipments);
-            modifiers.ForEach(modifier => computed *= modifier.HealthModifierFloat);
             modifiers.ForEach(modifier => computed += modifier.HealthModifierInt);
+            modifiers.ForEach(modifier => computed *= modifier.HealthModifierFloat);
 
             if ((int)Math.Round(computed * Class.HealthModifierFloat) < 1)
             {
@@ -49,8 +49,8 @@ class Hero : IMarketCustomer, ICanFight
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.AddRange(Weapons);
             modifiers.AddRange(Equipments);
-            modifiers.ForEach(modifier => computed *= modifier.SpeedModifierFloat);
             modifiers.ForEach(modifier => computed += modifier.SpeedModifierInt);
+            modifiers.ForEach(modifier => computed *= modifier.SpeedModifierFloat);
 
             if ((int)Math.Round(computed * Class.SpeedModifierFloat) < 1)
             {
@@ -67,8 +67,8 @@ class Hero : IMarketCustomer, ICanFight
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.AddRange(Weapons);
             modifiers.AddRange(Equipments);
-            modifiers.ForEach(modifier => computed *= modifier.ForceModifierFloat);
             modifiers.ForEach(modifier => computed += modifier.ForceModifierInt);
+            modifiers.ForEach(modifier => computed *= modifier.ForceModifierFloat);
 
             if ((int)Math.Round(computed * Class.ForceModifierFloat) < 1)
             {
@@ -85,8 +85,8 @@ class Hero : IMarketCustomer, ICanFight
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.AddRange(Weapons);
             modifiers.AddRange(Equipments);
-            modifiers.ForEach(modifier => computed *= modifier.AgilityModifierFloat);
             modifiers.ForEach(modifier => computed += modifier.AgilityModifierInt);
+            modifiers.ForEach(modifier => computed *= modifier.AgilityModifierFloat);
 
             if ((int)Math.Round(computed * Class.AgilityModifierFloat) < 1)
             {
